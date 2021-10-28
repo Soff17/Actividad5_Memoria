@@ -58,10 +58,11 @@ def draw():
 
     if mark is not None and hide[mark]:
         x, y = xy(mark)
-        up()
-        goto(x + 2, y)
-        color('black')
-        write(tiles[mark], font=('Arial', 30, 'normal'))
+        if tiles[mark]<=8:
+            up()
+            goto(x + 26, y+4) # Centrando digito
+            color('black')
+            write(tiles[mark], align="center", font=('Arial', 30, 'normal')) # Centrando el digito en el cuadro
     goto(0,210) # Posicionando contador de taps que se mostrará
     write (taps,font=("Arial",20)) # Desplegando la cantidad de taps
     
