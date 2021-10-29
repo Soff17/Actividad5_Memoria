@@ -7,6 +7,8 @@ tiles = list(range(32)) * 2
 state = {'mark': None,"count":0}
 hide = [True] * 64
 taps=0 # Inicializa contador de taps
+encontrados = 0 # inicializando contador de parejas encontradas
+
 
 def square(x, y):
     "Draw white square with black outline at (x, y)."
@@ -41,6 +43,9 @@ def tap(x, y):
         hide[spot] = False
         hide[mark] = False
         state['mark'] = None
+        global encontrados
+        encontrados += 1 # contabilizando las parejas
+
 
 def draw():
     "Draw image and tiles."
@@ -65,7 +70,13 @@ def draw():
             write(tiles[mark], align="center", font=('Arial', 30, 'normal')) # Centrando el digito en el cuadro
     goto(0,210) # Posicionando contador de taps que se mostrará
     write (taps,font=("Arial",20)) # Desplegando la cantidad de taps
-    
+
+    if encontrados == 32: # Compara el total de parejas encontradas con las totales
+        up()
+        goto(0, 0)
+        color('green')
+        write("GANASTE!!",  align="center", font=("Arial", 20, "bold")) # Detecta cuando todas se han encontrado y lanza mensaje
+
     update()
     ontimer(draw, 100)
 
