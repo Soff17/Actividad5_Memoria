@@ -81,9 +81,11 @@ def draw():
 
 shuffle(tiles)
 setup(420, 420, 370, 0)
+colormode(255) # interpretación del color 
 addshape(car)
 hideturtle()
 tracer(False)
+addshape(car)
 onscreenclick(tap)
 draw()
 done()
