@@ -63,11 +63,10 @@ def draw():
 
     if mark is not None and hide[mark]:
         x, y = xy(mark)
-        if tiles[mark]<=8:
-            up()
-            goto(x + 26, y+4) # Centrando digito
-            color('black')
-            write(tiles[mark], align="center", font=('Arial', 30, 'normal')) # Centrando el digito en el cuadro
+        up()
+        goto(x + 26, y+4) # Centrando digito
+        color(tiles[mark]*7, 255-tiles[mark]*3, 255-tiles[mark]*5) # Mejoramiento del juego con colores para una mejor memoria
+        write(tiles[mark], align="center", font=('Arial', 30, 'normal')) # Centrando el digito en el cuadro
     goto(0,210) # Posicionando contador de taps que se mostrará
     write (taps,font=("Arial",20)) # Desplegando la cantidad de taps
 
